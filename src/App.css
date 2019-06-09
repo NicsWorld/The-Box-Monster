@@ -1,13 +1,18 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+@keyframes antena_d { 50% {transform: rotate(20deg);} }
+@keyframes antena_e { 50% {transform: rotate(-20deg);} }
+@keyframes blink {
+  0%, 2%, 60%, 62%, 100% { transform: scaleX(1) scaleY(1); }
+  1%, 61% { transform: scaleX(1.3) scaleY(0.1); }
 }
-
+@keyframes bouncebody {
+  to { transform: scaleX(1.03) scaleY(0.97); }
+}
+.box{
+  animation: bouncebody alternate infinite 400ms 40ms ease-in-out;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -19,15 +24,196 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.monster {
+  font-size: 0.7em;
+  margin: 0 auto;
+  width: 24em;
+  height: 12em;
+  box-sizing: content-box;
+  border: 0.07em solid transparent;
+  position: relative;
+  top: 2em;
+  user-select: none;
+  cursor: grab;
+  background-color: #7cb342;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.monster-mouth {
+  position: absolute;
+    background: black;
+    overflow: hidden;
+    font-size: 0.3em;
+    width: 31em;
+    height: 30.7em;
+    left: 50%;
+    bottom: 3.3em;
+    transform: translateX(-50%);
+    border-radius: 0.7em 0.7em 1.2em 1.2em;
+}
+
+.monster-mouth::before {
+  content: '';
+  display: block;
+  background: #ff8800;
+  width: 100%;
+  height: 2.2em;
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.monster-tooth:before,
+.monster-tooth:after,
+.monster-tooth {
+  --teeth-size: 3.25em;
+  display: block;
+  width: 0;
+  height: 0;
+  font-size: inherit;
+  border-left: calc(var(--teeth-size) / 2) solid transparent;
+  border-right: calc(var(--teeth-size) / 2) solid transparent;
+  border-top: var(--teeth-size) solid #fff;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.monster-tooth2:before,
+.monster-tooth2:after,
+.monster-tooth2 {
+  --teeth-size: 3.25em;
+  display: block;
+  width: 0;
+  height: 0;
+  font-size: inherit;
+  border-left: calc(var(--teeth-size) / 2) solid transparent;
+  border-right: calc(var(--teeth-size) / 2) solid transparent;
+  border-top: var(--teeth-size) solid #fff;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.monster-tooth:before {
+  content: '';
+  transform: translateX(-200%) translateY(-100%);
+}
+
+.monster-tooth:after {
+  content: '';
+  transform: translateX(100%) translateY(-100%);
+}
+
+.monster-tooth2:before {
+  content: '';
+  transform: translateX(-350%) translateY(-100%);
+}
+
+.monster-tooth2:after {
+  content: '';
+  transform: translateX(250%) translateY(-100%);
+}
+.monster-eyes-left {
+  text-align: center;
+  display: flex;
+  font-size: 0.65em;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  left: 1.25em;
+  top: 2.0em;
+}
+
+.monster-eye-lid-left{
+  text-align: center;
+  display: flex;
+  font-size: 0.65em;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  left: -0.5em;
+  top: -6.0em;
+  animation: antena_e 5s infinite;
+}
+
+.monster-eye-left {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 75%;
+  height: 75%;
+  background-color: black;
+  border-radius: 50%;
+}
+.monster-eye-lid-left{
+  background-color: white;
+  border-radius: 0.5em 0.5em 0.5em 0.5em / 0.6em 0.6em 0.4em 0.4em;
+  box-shadow: 0.03em 0.14em rgba(0,0,0,0.1);
+  animation: blink forwards infinite 10s ease-in-out;
+}
+
+.monster-eye-left:after { /*white shadow*/
+  --pupil-size: 1.2em;
+  position: absolute;
+  top: 1.05em;
+  left: 1.3em;
+  width: var(--pupil-size);
+  height: var(--pupil-size);
+  background: white;
+  border-radius: 50%;
+  content: " ";
+}
+
+.monster-eyes-right {
+  text-align: center;
+  display: flex;
+  font-size: 0.65em;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  left: 1.25em;
+  top: 2.0em;
+}
+
+.monster-eye-lid-right{
+  text-align: center;
+  display: flex;
+  font-size: 0.65em;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  left: 31.25em;
+  top: -6.0em;
+  position: absolute;
+  animation: antena_e 5s infinite;
+}
+
+
+.monster-eye-right {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 75%;
+  height: 75%;
+  background-color: black;
+  border-radius: 50%;
+}
+.monster-eye-lid-right{
+  background-color: white;
+  border-radius: 0.5em 0.5em 0.5em 0.5em / 0.6em 0.6em 0.4em 0.4em;
+  box-shadow: 0.03em 0.14em rgba(0,0,0,0.1);
+  animation: blink forwards infinite 10s ease-in-out;
+}
+
+.monster-eye-right:after { /*white shadow*/
+  --pupil-size: 1.2em;
+  position: absolute;
+  top: 1.05em;
+  left: 1.3em;
+  width: var(--pupil-size);
+  height: var(--pupil-size);
+  background: white;
+  border-radius: 50%;
+  content: " ";
 }
