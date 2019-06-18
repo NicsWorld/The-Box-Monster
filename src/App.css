@@ -217,3 +217,28 @@
   border-radius: 50%;
   content: " ";
 }
+
+.navigation{
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  list-style: none;
+}
+
+.navigation a {
+  background-color: #eee; /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.navigation a:hover {
+  background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.navigation a.active {
+  background-color: #4CAF50; /* Add a green color to the "active/current" link */
+  color: white;
+}
